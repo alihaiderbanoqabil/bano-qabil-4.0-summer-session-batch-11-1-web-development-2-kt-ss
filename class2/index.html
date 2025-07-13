@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>JavaScript Modules</h1>
+
+    <p id="demo"></p>
+
+    <!-- <script src="./message.js"></script> -->
+    <script type="module">
+        // this is default import 
+        // import message from './message.js';
+        // import ali from './message.js';
+        // this is name import 
+        // import { message } from './message.js';
+        // import { message as msg, name, age } from './message.js';
+        import { message as msg } from './message.js';
+        const message = "Hello, this is a message from the module!";
+        // console.log(message, 'message', name, age);
+
+
+        // document.getElementById("demo").innerHTML = message();
+        document.getElementById("demo").innerHTML = msg();
+
+    </script>
+
+</body>
+
+</html>
