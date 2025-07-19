@@ -14,3 +14,10 @@ createRoot(root).render(
 //     <App />
 //   </StrictMode>,
 // )
+
+
+
+// const camelCase = '';
+// const PascalCase = '';
+// const kebab-case = '';
+// const snake_case = '';
