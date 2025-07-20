@@ -3,11 +3,14 @@
 // import viteLogo from '/vite.svg'
 // import './App.css'
 
-import { useState } from "react"
-import { Button } from "./components/Button"
-import Greeting from "./components/Greeting"
-import { ProductCard } from "./components/ProductCard"
-import { Counter } from "./components/Counter"
+import { useState } from "react";
+import { Button } from "./components/Button";
+import Greeting from "./components/Greeting";
+import { ProductCard } from "./components/ProductCard";
+import { Counter } from "./components/Counter";
+import { ConditonalRendering } from "./components/ConditonalRendering";
+import { FormHandling } from "./components/FormHandling";
+// import { ConditonalRendering } from "./components/ConditonalRendering";
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -41,21 +44,19 @@ import { Counter } from "./components/Counter"
 // export default App
 const hobbies = [
   { id: 1, name: "Walking" },
-  { id: 2, name: "Swimming" }
-]
+  { id: 2, name: "Swimming" },
+];
 export const App = () => {
   // console.log("App component is rendering");
   // console.log(hobbies[0], 'hoby');
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
   return (
     <div className="app">
-
-      <Counter />
+      {/* <Counter /> */}
       {/* <h1>Hello, World!</h1>
       <p>This is a simple React application.</p>
       <Button /> */}
       {/* <Greeting name="Ali Haider" age={20} hobbies={["eating", "walking"]} /> */}
-
 
       {/* <button onClick={() => setCount((count) => count + 1)}>
         count is {count}
@@ -80,6 +81,9 @@ export const App = () => {
       {/* <ProductCard /> */}
       {/* <ProductCard />
       <ProductCard /> */}
+
+      {/* <ConditonalRendering /> */}
+      <FormHandling />
     </div>
-  )
-}
+  );
+};

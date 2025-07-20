@@ -11,6 +11,12 @@ import { useState } from "react";
 // console.log(age);
 // console.log(isMale);
 // console.log(remainingElements, "remainingElements");
+// const add = () => {
+//   const [count, setCount] = useState(0);
+// };
+
+// add();
+
 
 export const Counter = () => {
   //   const count = useState("ali");
