@@ -10,6 +10,7 @@ import { ProductCard } from "./components/ProductCard";
 import { Counter } from "./components/Counter";
 import { ConditonalRendering } from "./components/ConditonalRendering";
 import { FormHandling } from "./components/FormHandling";
+import { APICalling } from "./components/APICalling";
 // import { ConditonalRendering } from "./components/ConditonalRendering";
 
 // function App() {
@@ -83,7 +84,8 @@ export const App = () => {
       <ProductCard /> */}
 
       {/* <ConditonalRendering /> */}
-      <FormHandling />
+      {/* <FormHandling /> */}
+      <APICalling />
     </div>
   );
 };
