@@ -1,10 +1,28 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+// import Container from "react-bootstrap/Container";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
 
+
+let name = "";
+// // if (name === "") {
+// if (!name) {
+//   name = "John";
+// }
+// console.log(name, "name in UserCard");
+// const fullName = name || "Ali";
+const fullName = name ?? "Ali";
+// console.log(fullName, "fullName in UserCard");
+
+// const age = 30;
+// if (age > 18) {
+//   name = "John";
+// }
 export const UserCard = (props) => {
-  console.log(props, "props in UserCard");
+  // console.log(props, "props in UserCard");
   const { name, username, email, phone, website, address, company } =
-    props.user;
+    props?.user || {};
 
   return (
     // <Card style={{ width: "18rem" }}>
@@ -18,6 +36,7 @@ export const UserCard = (props) => {
     //     <Button variant="primary">Go somewhere</Button>
     //   </Card.Body>
     // </Card>
+
     <div
       style={{
         border: "1px solid #ccc",
@@ -47,19 +66,20 @@ export const UserCard = (props) => {
       <div style={{ marginTop: "1rem" }}>
         <h4>Address</h4>
         <p>
-          {address.suite}, {address.street}, {address.city} - {address.zipcode}
+          {address?.suite}, {address?.street}, {address?.city} -{" "}
+          {address?.zipcode}
         </p>
       </div>
 
       <div style={{ marginTop: "1rem" }}>
         <h4>Company</h4>
         <p>
-          <strong>{company.name}</strong>
+          <strong>{company?.name}</strong>
         </p>
         <p>
-          <em>{company.catchPhrase}</em>
+          <em>{company?.catchPhrase}</em>
         </p>
-        <p>{company.bs}</p>
+        <p>{company?.bs}</p>
       </div>
     </div>
   );
