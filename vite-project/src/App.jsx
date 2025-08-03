@@ -13,6 +13,7 @@ import { FormHandling } from "./components/FormHandling";
 import { APICalling } from "./components/APICalling";
 import { ChildrenProps } from "./components/ChildrenProps";
 import { useUserContext } from "./context/UserContext";
+import { Todos } from "./components/Todos";
 // import { ConditonalRendering } from "./components/ConditonalRendering";
 
 // function App() {
@@ -55,11 +56,11 @@ export const App = () => {
   const [count, setCount] = useState(0);
   const { user, login, logout, updateUser } = useUserContext();
   // const { user} = useUserContext();
-  console.log("Global State:", { user, login, logout, updateUser });
+  // console.log("Global State:", { user, login, logout, updateUser });
 
   return (
     <div className="app">
-      <pre>{JSON.stringify(user, undefined, 4)}</pre>
+      {/* <pre>{JSON.stringify(user, undefined, 4)}</pre> */}
       {/* <Counter /> */}
       {/* <h1>Hello, World!</h1>
       <p>This is a simple React application.</p>
@@ -90,7 +91,7 @@ export const App = () => {
       {/* <ProductCard />
       <ProductCard /> */}
 
-      <ConditonalRendering />
+      {/* <ConditonalRendering /> */}
       {/* <FormHandling /> */}
       {/* <APICalling /> */}
 
@@ -149,6 +150,7 @@ export const App = () => {
           alt=""
         />
       </ChildrenProps> */}
+      <Todos />
     </div>
   );
 };
