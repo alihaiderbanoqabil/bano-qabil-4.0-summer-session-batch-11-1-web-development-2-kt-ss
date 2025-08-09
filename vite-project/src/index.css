@@ -67,7 +67,6 @@ button:focus-visible {
   }
 } */
 
-
 /* body {
   font-family: Arial, sans-serif;
   background: #f4f4f4;
@@ -136,4 +135,22 @@ button:focus-visible {
 
 .product-button:hover {
   background-color: #2980b9;
+}
+
+.mx-6 {
+  margin-right: 5rem;
+  margin-left: 5rem;
+}
+
+.my-6 {
+  margin-top: 5rem;
+  margin-top: 5rem;
+}
+
+.header {
+  background-color: rgb(0, 247, 255) !important;
+}
+
+nav h1 {
+  color: yellow;
 }

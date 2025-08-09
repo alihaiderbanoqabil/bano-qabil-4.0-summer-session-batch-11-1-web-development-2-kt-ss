@@ -26,7 +26,7 @@
 //   const handleShow = () => setShow(true);
 //   // const [todos, dispatch] = useReducer(reducer, initialTodos);
 
-//   const onTodoComplete = (selectedTodo) => {
+//   const onTodoToggle = (selectedTodo) => {
 //     // console.log(selectedTodo, "selectedTodo");
 
 //     const updatedTodos = todos.map((todo) => {
@@ -108,7 +108,7 @@
 //                 <input
 //                   type="checkbox"
 //                   checked={todo.complete}
-//                   onChange={() => onTodoComplete(todo)}
+//                   onChange={() => onTodoToggle(todo)}
 //                 />
 //                 {todo.complete ? (
 //                   <del>{todo.title} </del>
@@ -148,7 +148,7 @@
 //               <input
 //                 type="checkbox"
 //                 checked={todo.complete}
-//                 onChange={() => onTodoComplete(todo)}
+//                 onChange={() => onTodoToggle(todo)}
 //               />
 //               {todo.title}
 //             </label>
@@ -194,30 +194,44 @@ import { useReducer, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FaRegTrashCan, FaRegSquarePlus } from "react-icons/fa6";
+import { TodoList } from "./TodoList";
 
 const initialTodos = [
-  { id: 1, title: "Todo 1", complete: false },
-  { id: 2, title: "Todo 2", complete: false },
+  // { id: 1, title: "Todo 1", complete: false },
+  // { id: 2, title: "Todo 2", complete: false },
 ];
 
 // Reducer function
 function todosReducer(state, action) {
   console.log("state: ", state);
   console.log("action: ", action);
-  
+  console.log("action type: ", action.type);
+
   switch (action.type) {
     case "ADD_TODO":
       return [
+        // {
+        //   id: 1,
+        //   title: "Todo 1",
+        //   complete: false,
+        // },
+        // {
+        //   id: 2,
+        //   title: "Todo 2",
+        //   complete: false,
+        // },
         ...state,
         { id: state.length + 1, title: action.payload.trim(), complete: false },
       ];
 
     case "TOGGLE_TODO":
-      return state.map((todo) =>
-        todo.id === action.payload
+      return state.map((todo) => {
+        console.log(todo, "todo");
+
+        return todo.id === action.payload
           ? { ...todo, complete: !todo.complete }
-          : todo
-      );
+          : todo;
+      });
 
     case "UPDATE_TODO":
       return state.map((todo) =>
@@ -229,6 +243,9 @@ function todosReducer(state, action) {
     case "DELETE_TODO":
       return state.filter((todo) => todo.id !== action.payload);
 
+    case "DELETE_ALL_TODOS":
+      return [];
+
     default:
       return state;
   }
@@ -236,10 +253,13 @@ function todosReducer(state, action) {
 
 export function Todos() {
   const [todos, dispatch] = useReducer(todosReducer, initialTodos);
+  // const reducer  = useReducer(todosReducer, initialTodos);
   const [todo, setTodo] = useState("");
   const [selectedTodo, setSelectedTodo] = useState(null);
   const [show, setShow] = useState(false);
-  // console.log(todos, "todos", todo);
+  console.log(todos, "todos");
+  // console.log(reducer[0], "reducer");
+  // console.log(reducer[1](), "reducer");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -247,12 +267,20 @@ export function Todos() {
   function onTodoAdd(event) {
     event.preventDefault();
     // if (!todo.trim()) return;
-    
+    // if (todo === "") {
+    //   alert("Please enter your todo title first!");
+    // } else {
+    //   dispatch({ type: "ADD_TODO", payload: todo });
+    //   setTodo("");
+    // }
+    if (todo === "") {
+      return alert("Please enter your todo title first!");
+    }
     dispatch({ type: "ADD_TODO", payload: todo });
     setTodo("");
   }
 
-  function onTodoComplete(todoId) {
+  function onTodoToggle(todoId) {
     dispatch({ type: "TOGGLE_TODO", payload: todoId });
   }
 
@@ -274,6 +302,21 @@ export function Todos() {
     }
   }
 
+  const deleteAllTodos = () => {
+    const areYouSure = confirm(
+      `Are you sure you want to delete all todos? You can't undo this action.`
+    );
+    if (areYouSure) {
+      dispatch({ type: "DELETE_ALL_TODOS" });
+    }
+  };
+
+  const openUpdateModal = (todo) => {
+    setSelectedTodo(todo);
+    handleShow();
+  };
+  const transformedTodos = todos || [];
+
   return (
     <>
       <form onSubmit={onTodoAdd}>
@@ -282,20 +325,48 @@ export function Todos() {
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
           placeholder="Enter your todo title!"
+        
         />
-        <Button type="submit" variant="primary">
+        <Button
+          type="submit"
+          // disabled={todo === "" ? true : false}
+          // disabled={todo === ""}
+          // disabled={!todo}
+          variant="primary"
+          className="mx-6"
+        >
           Add Todo <FaRegSquarePlus />
         </Button>
+        <Button
+          type="button"
+          variant="danger"
+          disabled={transformedTodos.length === 0}
+          onClick={deleteAllTodos}
+        >
+          Delete All Todos <FaRegSquarePlus />
+        </Button>
+        {/* {transformedTodos.length > 0 && (
+          <Button type="button" variant="danger" onClick={deleteAllTodos}>
+            Delete All Todos <FaRegSquarePlus />
+          </Button>
+        )} */}
       </form>
-
-      {todos.length > 0 ? (
-        todos.map((todo) => (
+      <TodoList
+        todos={transformedTodos}
+        deleteTodo={onDeleteTodo}
+        toggleTodo={onTodoToggle}
+        updateTodo={openUpdateModal}
+        // handleShow={handleShow}
+        // setSelectedTodo={setSelectedTodo}
+      />
+      {/* {transformedTodos.length > 0 ? (
+        transformedTodos.map((todo) => (
           <div key={todo.id} className="my-3">
             <label>
               <input
                 type="checkbox"
                 checked={todo.complete}
-                onChange={() => onTodoComplete(todo.id)}
+                onChange={() => onTodoToggle(todo.id)}
               />
               {todo.complete ? (
                 <del>{todo.title}</del>
@@ -324,7 +395,7 @@ export function Todos() {
         ))
       ) : (
         <h3>You don't have any todos!</h3>
-      )}
+      )} */}
 
       {show && selectedTodo && (
         <Modal show={show} onHide={handleClose}>

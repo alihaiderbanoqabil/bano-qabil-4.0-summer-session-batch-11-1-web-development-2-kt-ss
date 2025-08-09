@@ -4,7 +4,8 @@
 // import './App.css'
 
 import { useState } from "react";
-import { Button } from "./components/Button";
+// import { Button } from "./components/Button";
+import { Button } from "./components/button/Button";
 import Greeting from "./components/Greeting";
 import { ProductCard } from "./components/ProductCard";
 import { Counter } from "./components/Counter";
@@ -14,6 +15,7 @@ import { APICalling } from "./components/APICalling";
 import { ChildrenProps } from "./components/ChildrenProps";
 import { useUserContext } from "./context/UserContext";
 import { Todos } from "./components/Todos";
+import { Header } from "./components/header/Header";
 // import { ConditonalRendering } from "./components/ConditonalRendering";
 
 // function App() {
@@ -60,6 +62,8 @@ export const App = () => {
 
   return (
     <div className="app">
+      {/* <Header /> */}
+      <Button />
       {/* <pre>{JSON.stringify(user, undefined, 4)}</pre> */}
       {/* <Counter /> */}
       {/* <h1>Hello, World!</h1>

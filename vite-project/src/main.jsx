@@ -27,3 +27,16 @@ createRoot(root).render(
 // const PascalCase = '';
 // const kebab-case = '';
 // const snake_case = '';
+
+
+// tommorrow class topics 
+//  Performance Optimization
+// React.memo
+
+// useCallback
+
+// useMemo
+
+// Lazy loading (React.lazy, Suspense)
+
+// Code splitting
