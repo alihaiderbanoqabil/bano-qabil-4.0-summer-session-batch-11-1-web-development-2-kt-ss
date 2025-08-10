@@ -1,3 +1,6 @@
 .error {
   background-color: red;
 }
+.info {
+  background-color: rgb(16, 159, 211);
+}

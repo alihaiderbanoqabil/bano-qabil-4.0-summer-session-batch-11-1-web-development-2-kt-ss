@@ -3,7 +3,7 @@
 // import viteLogo from '/vite.svg'
 // import './App.css'
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 // import { Button } from "./components/Button";
 import { Button } from "./components/button/Button";
 import Greeting from "./components/Greeting";
@@ -16,6 +16,8 @@ import { ChildrenProps } from "./components/ChildrenProps";
 import { useUserContext } from "./context/UserContext";
 import { Todos } from "./components/Todos";
 import { Header } from "./components/header/Header";
+import { TodosList } from "./components/TodosList";
+import { UseMemoHook } from "./components/UseMemoHook";
 // import { ConditonalRendering } from "./components/ConditonalRendering";
 
 // function App() {
@@ -55,15 +57,32 @@ const hobbies = [
 export const App = () => {
   // console.log("App component is rendering");
   // console.log(hobbies[0], 'hoby');
-  const [count, setCount] = useState(0);
-  const { user, login, logout, updateUser } = useUserContext();
+  // const [count, setCount] = useState(0);
+  // const { user, login, logout, updateUser } = useUserContext();
   // const { user} = useUserContext();
   // console.log("Global State:", { user, login, logout, updateUser });
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState(["todo 1", "todo 2"]);
 
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+
+  const addTodo = () => {
+    const todosCount = todos.length;
+    setTodos((prev) => [...prev, `todo ${todosCount + 1}`]);
+  };
+  // const addTodo = useCallback(() => {
+  //   const todosCount = todos.length;
+  //   setTodos((prev) => [...prev, `todo ${todosCount + 1}`]);
+  // }, [todos]);
+  const obj = { name: "ali", age: 27 };
+  const array = ["ali", "hasnain"];
+  const name = "ali";
   return (
     <div className="app">
       {/* <Header /> */}
-      <Button />
+      {/* <Button /> */}
       {/* <pre>{JSON.stringify(user, undefined, 4)}</pre> */}
       {/* <Counter /> */}
       {/* <h1>Hello, World!</h1>
@@ -154,7 +173,21 @@ export const App = () => {
           alt=""
         />
       </ChildrenProps> */}
-      <Todos />
+      {/* <Todos /> */}
+      <TodosList
+        todos={todos}
+        addTodo={addTodo}
+        // // obj={obj}
+        // array={array}
+        // name={name}
+      />
+      <hr />
+      <div>
+        Count: {count}
+        <button onClick={increment}>+</button>
+      </div>
+
+      {/* <UseMemoHook /> */}
     </div>
   );
 };

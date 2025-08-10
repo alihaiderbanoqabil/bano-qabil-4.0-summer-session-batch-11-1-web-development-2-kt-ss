@@ -29,13 +29,14 @@ createRoot(root).render(
 // const snake_case = '';
 
 
-// tommorrow class topics 
+// tomorrow class topics 
 //  Performance Optimization
 // React.memo
 
+// useMemo
+
 // useCallback
 
-// useMemo
 
 // Lazy loading (React.lazy, Suspense)
 

@@ -195,6 +195,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FaRegTrashCan, FaRegSquarePlus } from "react-icons/fa6";
 import { TodoList } from "./TodoList";
+import { Counter } from "./Counter";
 
 const initialTodos = [
   // { id: 1, title: "Todo 1", complete: false },
@@ -325,7 +326,6 @@ export function Todos() {
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
           placeholder="Enter your todo title!"
-        
         />
         <Button
           type="submit"
@@ -351,6 +351,7 @@ export function Todos() {
           </Button>
         )} */}
       </form>
+      <Counter />
       <TodoList
         todos={transformedTodos}
         deleteTodo={onDeleteTodo}
