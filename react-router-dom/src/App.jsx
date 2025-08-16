@@ -24,6 +24,7 @@ const router = createBrowserRouter([
         <Contact />
       </>
     ),
+    caseSensitive: false,
   },
   {
     path: "about",
