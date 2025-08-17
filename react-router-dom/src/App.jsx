@@ -4,9 +4,30 @@ import { Home } from "./screens/Home";
 import { Contact } from "./screens/Contact";
 import { About } from "./screens/About";
 import { Blogs } from "./screens/Blogs";
+import { Blog } from "./screens/Blog";
 import { Products } from "./screens/Products";
+import { Layout } from "./layouts/Layout";
+import { PageNotFound404 } from "./screens/PageNotFound404";
+
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />, // common layout with header
+    children: [
+      { index: true, element: <Home /> }, // "/" route
+      { path: "contact", element: <Contact /> },
+      { path: "about", element: <About /> },
+      { path: "blogs", element: <Blogs /> },
+      { path: "blogs/:blogId", element: <Blog /> },
+      { path: "products", element: <Products /> },
+      { path: "*", element: <PageNotFound404 /> }, // fallback route
+    ],
+  },
+]);
+
+
+const router2 = createBrowserRouter([
   {
     path: "/",
     element: (

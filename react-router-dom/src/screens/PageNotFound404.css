@@ -1,0 +1,48 @@
+/* PageNotFound404.css */
+.notfound-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #2563eb, #9333ea);
+  color: white;
+  padding: 20px;
+}
+
+.notfound-title {
+  font-size: 8rem;
+  font-weight: bold;
+  margin: 0;
+  animation: pulse 1.5s infinite;
+}
+
+.notfound-text {
+  font-size: 1.3rem;
+  margin: 20px 0;
+  max-width: 500px;
+}
+
+.notfound-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: white;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.notfound-btn:hover {
+  background: #f3f4f6;
+  transform: scale(1.05);
+}
+
+/* Simple pulse animation */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
