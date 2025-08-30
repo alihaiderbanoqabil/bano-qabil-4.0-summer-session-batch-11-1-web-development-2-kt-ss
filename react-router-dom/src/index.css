@@ -66,3 +66,13 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+.nav-link {
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-link.active {
+  background-color: cyan;
+}

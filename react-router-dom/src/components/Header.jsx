@@ -116,51 +116,358 @@
 //   );
 // };
 
-// Header.jsx
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import "./Header.css"; // import styles
+// // Header.jsx
+// import { useState } from "react";
+// import { Link } from "react-router-dom";
+// import "./Header.css"; // import styles
 
+// export const Header = () => {
+//   const [isOpen, setIsOpen] = useState(false);
+
+//   return (
+//     <header className="header">
+//       <div className="container">
+//         {/* Logo */}
+//         <Link to="/" className="logo">
+//           MyApp
+//         </Link>
+
+//         {/* Desktop Menu */}
+
+//         {isOpen && (
+//           <nav className={`nav`}>
+//             <Link to="/" onClick={() => setIsOpen(false)}>
+//               Home
+//             </Link>
+//             <Link to="/about" onClick={() => setIsOpen(false)}>
+//               About
+//             </Link>
+//             <Link to="/services" onClick={() => setIsOpen(false)}>
+//               Services
+//             </Link>
+//             <Link to="/contact" onClick={() => setIsOpen(false)}>
+//               Contact
+//             </Link>
+//             <Link to="/blogs" onClick={() => setIsOpen(false)}>
+//               Blogs
+//             </Link>
+//             <Link to="/products" onClick={() => setIsOpen(false)}>
+//               Products
+//             </Link>
+//           </nav>
+//         )}
+
+//         {/* Hamburger Button */}
+//         <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
+//           ☰
+//         </button>
+//       </div>
+//     </header>
+//   );
+// };
+
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import "./Header.css"; // import styles
+import { useWindowResize } from "../hooks/useWindowResize";
+
+const Nav = ({ className = "", setIsOpen }) => {
+  return (
+    <nav className={className}>
+      <NavLink
+        to="/"
+        // className={getActiveClass}
+        style={({ isActive, isPending, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "bold" : "",
+            color: isPending ? "red" : "black",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }}
+        replace={true}
+        onClick={() => setIsOpen(false)}
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to="/about"
+        // className={getActiveClass}
+        style={({ isActive, isPending, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "bold" : "",
+            color: isPending ? "red" : "black",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }}
+        replace={true}
+        onClick={() => setIsOpen(false)}
+      >
+        About
+      </NavLink>
+      <NavLink
+        to="/services"
+        // className={getActiveClass}
+        style={({ isActive, isPending, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "bold" : "",
+            color: isPending ? "red" : "black",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }}
+        onClick={() => setIsOpen(false)}
+      >
+        Services
+      </NavLink>
+      <NavLink
+        to="/contact"
+        // className={getActiveClass}
+        style={({ isActive, isPending, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "bold" : "",
+            color: isPending ? "red" : "black",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }}
+        onClick={() => setIsOpen(false)}
+      >
+        Contact
+      </NavLink>
+      <NavLink
+        to="/blogs"
+        // className={getActiveClass}
+        style={({ isActive, isPending, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "bold" : "",
+            color: isPending ? "red" : "black",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }}
+        onClick={() => setIsOpen(false)}
+      >
+        Blogs
+      </NavLink>
+      <NavLink
+        to="/products"
+        // className={getActiveClass}
+        style={({ isActive, isPending, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "bold" : "",
+            color: isPending ? "red" : "black",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }}
+        onClick={() => setIsOpen(false)}
+      >
+        Products
+      </NavLink>
+    </nav>
+  );
+};
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { width, height } = useWindowResize();
+  console.log({ width, height });
+  // const getActiveClass = ({ isActive }) =>
+  //   isActive ? "nav-link active" : "nav-link";
+  const getActiveClass = (link) => {
+    console.log(link, "link");
+    const { isActive } = link;
+    return isActive ? "nav-link active" : "nav-link";
+  };
 
   return (
     <header className="header">
       <div className="container">
         {/* Logo */}
-        <Link to="/" className="logo">
+        <NavLink to="/" className="logo" >
           MyApp
-        </Link>
+        </NavLink>
 
-        {/* Desktop Menu */}
-
+        {width > 576 && (
+          // <nav className="">
+          //   <NavLink
+          //     to="/"
+          //     // className={getActiveClass}
+          //     style={({ isActive, isPending, isTransitioning }) => {
+          //       return {
+          //         fontWeight: isActive ? "bold" : "",
+          //         color: isPending ? "red" : "black",
+          //         viewTransitionName: isTransitioning ? "slide" : "",
+          //       };
+          //     }}
+          //     onClick={() => setIsOpen(false)}
+          //   >
+          //     Home
+          //   </NavLink>
+          //   <NavLink
+          //     to="/about"
+          //     // className={getActiveClass}
+          //     style={({ isActive, isPending, isTransitioning }) => {
+          //       return {
+          //         fontWeight: isActive ? "bold" : "",
+          //         color: isPending ? "red" : "black",
+          //         viewTransitionName: isTransitioning ? "slide" : "",
+          //       };
+          //     }}
+          //     onClick={() => setIsOpen(false)}
+          //   >
+          //     About
+          //   </NavLink>
+          //   <NavLink
+          //     to="/services"
+          //     // className={getActiveClass}
+          //     style={({ isActive, isPending, isTransitioning }) => {
+          //       return {
+          //         fontWeight: isActive ? "bold" : "",
+          //         color: isPending ? "red" : "black",
+          //         viewTransitionName: isTransitioning ? "slide" : "",
+          //       };
+          //     }}
+          //     onClick={() => setIsOpen(false)}
+          //   >
+          //     Services
+          //   </NavLink>
+          //   <NavLink
+          //     to="/contact"
+          //     // className={getActiveClass}
+          //     style={({ isActive, isPending, isTransitioning }) => {
+          //       return {
+          //         fontWeight: isActive ? "bold" : "",
+          //         color: isPending ? "red" : "black",
+          //         viewTransitionName: isTransitioning ? "slide" : "",
+          //       };
+          //     }}
+          //     onClick={() => setIsOpen(false)}
+          //   >
+          //     Contact
+          //   </NavLink>
+          //   <NavLink
+          //     to="/blogs"
+          //     // className={getActiveClass}
+          //     style={({ isActive, isPending, isTransitioning }) => {
+          //       return {
+          //         fontWeight: isActive ? "bold" : "",
+          //         color: isPending ? "red" : "black",
+          //         viewTransitionName: isTransitioning ? "slide" : "",
+          //       };
+          //     }}
+          //     onClick={() => setIsOpen(false)}
+          //   >
+          //     Blogs
+          //   </NavLink>
+          //   <NavLink
+          //     to="/products"
+          //     // className={getActiveClass}
+          //     style={({ isActive, isPending, isTransitioning }) => {
+          //       return {
+          //         fontWeight: isActive ? "bold" : "",
+          //         color: isPending ? "red" : "black",
+          //         viewTransitionName: isTransitioning ? "slide" : "",
+          //       };
+          //     }}
+          //     onClick={() => setIsOpen(false)}
+          //   >
+          //     Products
+          //   </NavLink>
+          // </nav>
+          <Nav setIsOpen={setIsOpen} />
+        )}
+        {/* Desktop/Menu */}
         {isOpen && (
-          <nav className={`nav`}>
-            <Link to="/" onClick={() => setIsOpen(false)}>
-              Home
-            </Link>
-            <Link to="/about" onClick={() => setIsOpen(false)}>
-              About
-            </Link>
-            <Link to="/services" onClick={() => setIsOpen(false)}>
-              Services
-            </Link>
-            <Link to="/contact" onClick={() => setIsOpen(false)}>
-              Contact
-            </Link>
-            <Link to="/blogs" onClick={() => setIsOpen(false)}>
-              Blogs
-            </Link>
-            <Link to="/products" onClick={() => setIsOpen(false)}>
-              Products
-            </Link>
-          </nav>
+          // <nav className={`nav`}>
+          //   <NavLink
+          //     to="/"
+          //     // className={getActiveClass}
+          //     style={({ isActive, isPending, isTransitioning }) => {
+          //       return {
+          //         fontWeight: isActive ? "bold" : "",
+          //         color: isPending ? "red" : "black",
+          //         viewTransitionName: isTransitioning ? "slide" : "",
+          //       };
+          //     }}
+          //     onClick={() => setIsOpen(false)}
+          //   >
+          //     Home
+          //   </NavLink>
+          //   <NavLink
+          //     to="/about"
+          //     // className={getActiveClass}
+          //     style={({ isActive, isPending, isTransitioning }) => {
+          //       return {
+          //         fontWeight: isActive ? "bold" : "",
+          //         color: isPending ? "red" : "black",
+          //         viewTransitionName: isTransitioning ? "slide" : "",
+          //       };
+          //     }}
+          //     onClick={() => setIsOpen(false)}
+          //   >
+          //     About
+          //   </NavLink>
+          //   <NavLink
+          //     to="/services"
+          //     // className={getActiveClass}
+          //     style={({ isActive, isPending, isTransitioning }) => {
+          //       return {
+          //         fontWeight: isActive ? "bold" : "",
+          //         color: isPending ? "red" : "black",
+          //         viewTransitionName: isTransitioning ? "slide" : "",
+          //       };
+          //     }}
+          //     onClick={() => setIsOpen(false)}
+          //   >
+          //     Services
+          //   </NavLink>
+          //   <NavLink
+          //     to="/contact"
+          //     // className={getActiveClass}
+          //     style={({ isActive, isPending, isTransitioning }) => {
+          //       return {
+          //         fontWeight: isActive ? "bold" : "",
+          //         color: isPending ? "red" : "black",
+          //         viewTransitionName: isTransitioning ? "slide" : "",
+          //       };
+          //     }}
+          //     onClick={() => setIsOpen(false)}
+          //   >
+          //     Contact
+          //   </NavLink>
+          //   <NavLink
+          //     to="/blogs"
+          //     // className={getActiveClass}
+          //     style={({ isActive, isPending, isTransitioning }) => {
+          //       return {
+          //         fontWeight: isActive ? "bold" : "",
+          //         color: isPending ? "red" : "black",
+          //         viewTransitionName: isTransitioning ? "slide" : "",
+          //       };
+          //     }}
+          //     onClick={() => setIsOpen(false)}
+          //   >
+          //     Blogs
+          //   </NavLink>
+          //   <NavLink
+          //     to="/products"
+          //     // className={getActiveClass}
+          //     style={({ isActive, isPending, isTransitioning }) => {
+          //       return {
+          //         fontWeight: isActive ? "bold" : "",
+          //         color: isPending ? "red" : "black",
+          //         viewTransitionName: isTransitioning ? "slide" : "",
+          //       };
+          //     }}
+          //     onClick={() => setIsOpen(false)}
+          //   >
+          //     Products
+          //   </NavLink>
+          // </nav>
+            <Nav className="nav" setIsOpen={setIsOpen}/>
         )}
 
-        {/* Hamburger Button */}
-        <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
-          ☰
-        </button>
+        {width <= 576 && (
+          <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
+            ☰
+          </button>
+        )}
       </div>
     </header>
   );

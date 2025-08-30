@@ -8,6 +8,7 @@ import { Blog } from "./screens/Blog";
 import { Products } from "./screens/Products";
 import { Layout } from "./layouts/Layout";
 import { PageNotFound404 } from "./screens/PageNotFound404";
+import { LoginForm } from "./components/LoginForm";
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "blogs", element: <Blogs /> },
       { path: "blogs/:blogId", element: <Blog /> },
       { path: "products", element: <Products /> },
+      { path: "login", element: <LoginForm /> },
       { path: "*", element: <PageNotFound404 /> }, // fallback route
     ],
   },
