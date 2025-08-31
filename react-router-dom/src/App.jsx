@@ -8,8 +8,8 @@ import { Blog } from "./screens/Blog";
 import { Products } from "./screens/Products";
 import { Layout } from "./layouts/Layout";
 import { PageNotFound404 } from "./screens/PageNotFound404";
-import { LoginForm } from "./components/LoginForm";
-
+import { LoginForm } from "./screens/LoginForm";
+import { CakeStore } from "./screens/CakeStore";
 
 const router = createBrowserRouter([
   {
@@ -23,11 +23,11 @@ const router = createBrowserRouter([
       { path: "blogs/:blogId", element: <Blog /> },
       { path: "products", element: <Products /> },
       { path: "login", element: <LoginForm /> },
+      { path: "cake-store", element: <CakeStore /> },
       { path: "*", element: <PageNotFound404 /> }, // fallback route
     ],
   },
 ]);
-
 
 const router2 = createBrowserRouter([
   {

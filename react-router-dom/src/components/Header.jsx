@@ -266,7 +266,7 @@ const Nav = ({ className = "", setIsOpen }) => {
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { width, height } = useWindowResize();
-  console.log({ width, height });
+  // console.log({ width, height });
   // const getActiveClass = ({ isActive }) =>
   //   isActive ? "nav-link active" : "nav-link";
   const getActiveClass = (link) => {
