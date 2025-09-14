@@ -10,7 +10,7 @@ const TestError = () => {
 
   // This will trigger the error boundary
   if (shouldThrowError) {
-    throw new Error('This is a test error thrown intentionally!');
+    throw new Error('This is a test error thrown intentionally by ali!');
   }
 
   const triggerJavaScriptError = () => {
@@ -39,6 +39,7 @@ const TestError = () => {
 
   const triggerChunkLoadError = () => {
     // Simulate chunk loading error (like lazy loading failure)
+    setShouldThrowError(true);
     throw new Error('Loading chunk 123 failed. (missing: http://localhost:3000/static/js/123.chunk.js)');
   };
 

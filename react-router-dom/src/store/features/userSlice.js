@@ -11,13 +11,13 @@ export const fetchUsers = createAsyncThunk("fetch-users", (params) => {
   return axios("https://jsonplaceholder.typicode.com/users")
     .then((response) => {
       // const {data} = response;
-      console.log(response, "response");
+      // console.log(response, "response");
       // console.log(response.data, "data");
       return response;
     })
     .catch((error) => {
-      console.log(error.message, "error.message");
-      console.log(error, "error");
+      // console.log(error.message, "error.message");
+      // console.log(error, "error");
       return error;
     });
 });
@@ -32,7 +32,7 @@ const userSlice = createSlice({
     });
     builder.addCase(fetchUsers.fulfilled, (state, action) => {
       state.isLoading = false;
-      console.log(action, "action from userSlice fulfilled");
+      // console.log(action, "action from userSlice fulfilled");
       // if (action.payload.status !== 200) {
       //   state.error = action?.payload?.message || "";
       //   state.users = [];

@@ -6,16 +6,20 @@ import { ReloadOutlined, HomeOutlined } from "@ant-design/icons";
 // class ErrorBoundary extends React.Component {
 class ErrorBoundary extends Component {
   constructor(props) {
+    console.log("ErrorBoundary props:", props);
     super(props);
     this.state = {
       hasError: false,
       error: null,
       errorInfo: null,
     };
+    console.log(this, "this in constructor");
   }
 
   static getDerivedStateFromError(error) {
     // Update state so the next render will show the fallback UI
+    console.log("getDerivedStateFromError", error);
+    
     return { hasError: true };
   }
 
@@ -42,6 +46,8 @@ class ErrorBoundary extends Component {
   };
 
   render() {
+    console.log(this.state.hasError, "this.state.hasError");
+    
     if (this.state.hasError) {
       // Custom error UI based on props
       if (this.props.fallback) {
@@ -119,3 +125,8 @@ class ErrorBoundary extends Component {
 }
 
 export default ErrorBoundary;
+
+// const obj1 = new ErrorBoundary({ showDetails: true });
+// const obj2 = new ErrorBoundary({ showDetails: true });
+// console.log(obj1, "obj1 of ErrorBoundary");
+// console.log(obj2, "obj2 of ErrorBoundary");

@@ -28,10 +28,10 @@ const withSuspense = (Component) => (
   <SuspenseErrorBoundary>
     <Suspense
       fallback={
-        <div style={{ 
-          display: "flex", 
-          justifyContent: "center", 
-          alignItems: "center", 
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           minHeight: "200px",
           flexDirection: "column",
           gap: "16px"
@@ -45,6 +45,27 @@ const withSuspense = (Component) => (
     </Suspense>
   </SuspenseErrorBoundary>
 );
+// const withSuspense = (Component) => (
+//   <Suspense
+//     fallback={
+//       <div
+//         style={{
+//           display: "flex",
+//           justifyContent: "center",
+//           alignItems: "center",
+//           minHeight: "200px",
+//           flexDirection: "column",
+//           gap: "16px",
+//         }}
+//       >
+//         <Spin size="large" />
+//         <p>Loading...</p>
+//       </div>
+//     }
+//   >
+//     <Component />
+//   </Suspense>
+// );
 
 const router = createBrowserRouter([
   {
@@ -64,6 +85,7 @@ const router = createBrowserRouter([
       { path: "test-error", element: withSuspense(TestError) },
       { path: "*", element: withSuspense(PageNotFound404) },
     ],
+    
   },
 ]);
 
@@ -75,15 +97,16 @@ export const App = () => {
     try {
       dispatch(fetchUsers());
     } catch (error) {
-      console.error('Failed to fetch users:', error);
+      console.error("Failed to fetch users:", error);
     }
   }, [dispatch]);
 
-  return (
-    <ErrorBoundary showDetails={process.env.NODE_ENV === 'development'}>
-      <RouterProvider router={router} />
-    </ErrorBoundary>
-  );
+  return <RouterProvider router={router} />;
+  // return (
+  //   <ErrorBoundary showDetails={process.env.NODE_ENV === 'development'}>
+  //     <RouterProvider router={router} />
+  //   </ErrorBoundary>
+  // );
 };
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import { lazy, Suspense, useEffect } from "react";
