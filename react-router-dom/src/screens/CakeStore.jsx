@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cakeActions } from "../store/features/cakeSlice";
+import { CakeStoreShowCase } from "../components/CakeStoreShowCase";
 
-export const CakeStore = () => {
+const CakeStore = () => {
   const [numberOfOrder, setNumberOfOrder] = useState(0);
   const [numberOfRestock, setNumberOfRestock] = useState(0);
-  const { cake, user } = useSelector((state) => state);
   const dispatch = useDispatch();
   //   const cake = useSelector((state) => state.cake);
   //   const user = useSelector((state) => state.user);
@@ -18,8 +18,7 @@ export const CakeStore = () => {
 
   return (
     <div>
-      <h1>Cake Store</h1>
-      <p>There are {cake.numOfCakes || 0} cakes present in store right now</p>
+      <CakeStoreShowCase />
       <div>
         {/* <button onClick={() => cakeActions.order1Cake()}>Order 1 Cake</button> */}
         <button onClick={() => dispatch(cakeActions.order1Cake())}>
@@ -58,3 +57,5 @@ export const CakeStore = () => {
     </div>
   );
 };
+
+export default CakeStore;

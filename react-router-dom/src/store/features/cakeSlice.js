@@ -5,9 +5,9 @@ const initialState = {
 };
 
 const cakeSlice = createSlice({
-  //   initialState: {
-  //     numOfCakes: 20,
-  //   },
+  // initialState: {
+  //   numOfCakes: 20,
+  // },
   // OR
   initialState: initialState,
   name: "cake",
@@ -17,12 +17,13 @@ const cakeSlice = createSlice({
       console.log(action, "action from cakeSlice");
 
       state.numOfCakes--;
+      // state.numOfCakes = state.numOfCakes - 1;
     },
     orderNCake: (state, action) => {
       console.log(state, "state from cakeSlice");
       console.log(action, "action from cakeSlice");
-    //   state.numOfCakes = state.numOfCakes - action.payload;
-      state.numOfCakes -= action.payload;
+      state.numOfCakes = state.numOfCakes - action.payload;
+      // state.numOfCakes -= action.payload;
     },
     restock1Cake: (state, action) => {
       state.numOfCakes++;
@@ -32,6 +33,6 @@ const cakeSlice = createSlice({
     },
   },
 });
-
 export const cakeReducer = cakeSlice.reducer;
+// export default cakeSlice.reducer;
 export const cakeActions = cakeSlice.actions;

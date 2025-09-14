@@ -16,7 +16,7 @@ import { Link, useHref, useLocation, useMatch } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
 
-export const Blogs = () => {
+const Blogs = () => {
   const { state: postId } = useLocation();
   // const match = useMatch();
   const href = useHref();
@@ -71,3 +71,6 @@ export const Blogs = () => {
     </div>
   );
 };
+
+
+export default Blogs;

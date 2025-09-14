@@ -260,6 +260,34 @@ const Nav = ({ className = "", setIsOpen }) => {
       >
         Products
       </NavLink>
+      <NavLink
+        to="/cake-store"
+        // className={getActiveClass}
+        style={({ isActive, isPending, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "bold" : "",
+            color: isPending ? "red" : "black",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }}
+        onClick={() => setIsOpen(false)}
+      >
+        Cake Store
+      </NavLink>
+      <NavLink
+        to="/axios"
+        // className={getActiveClass}
+        style={({ isActive, isPending, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "bold" : "",
+            color: isPending ? "red" : "black",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }}
+        onClick={() => setIsOpen(false)}
+      >
+        Axios
+      </NavLink>
     </nav>
   );
 };

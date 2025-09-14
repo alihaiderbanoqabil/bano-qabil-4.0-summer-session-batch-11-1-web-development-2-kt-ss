@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { cakeReducer } from "./features/cakeSlice";
 import { userReducer } from "./features/userSlice";
+import { cakeReducer } from "./features/cakeSlice";
 
 export const store = configureStore({
   reducer: {

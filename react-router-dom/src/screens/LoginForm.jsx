@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Navigate } from "react-router-dom";
 
-export class LoginForm extends React.Component {
+class LoginForm extends React.Component {
   state = { user: null, error: null };
 
   async handleSubmit(event) {
@@ -29,3 +29,5 @@ export class LoginForm extends React.Component {
     );
   }
 }
+
+export default LoginForm;

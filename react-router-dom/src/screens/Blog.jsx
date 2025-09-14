@@ -18,7 +18,7 @@ import { Spin, Typography, Button } from "antd";
 
 const { Title, Paragraph } = Typography;
 
-export const Blog = () => {
+const Blog = () => {
   const navigate = useNavigate();
   const href = useHref();
   console.log(href, "href");
@@ -65,3 +65,5 @@ export const Blog = () => {
     </div>
   );
 };
+
+export default Blog;

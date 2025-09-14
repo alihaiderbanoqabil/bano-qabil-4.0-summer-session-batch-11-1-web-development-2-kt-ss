@@ -1,5 +1,13 @@
-import React from "react";
+import { useSelector } from "react-redux";
 
-export const About = () => {
-  return <div>About</div>;
+const About = () => {
+  const { users } = useSelector((state) => state.user);
+  return (
+    <div>
+      About
+      <pre>{JSON.stringify(users, null, 4)}</pre>
+    </div>
+  );
 };
+
+export default About;
