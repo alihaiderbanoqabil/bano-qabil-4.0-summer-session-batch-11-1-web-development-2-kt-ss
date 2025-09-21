@@ -45,7 +45,7 @@
     "category": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::article.article",
+      "target": "api::category.category",
       "inversedBy": "products"
     }
   }
