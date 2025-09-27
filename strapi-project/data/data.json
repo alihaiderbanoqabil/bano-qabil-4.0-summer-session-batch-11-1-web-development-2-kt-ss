@@ -49,7 +49,7 @@
       "slug": "story"
     }
   ],
-  "authors": [
+  "authors": [  
     {
       "name": "David Doe",
       "email": "daviddoe@strapi.io",

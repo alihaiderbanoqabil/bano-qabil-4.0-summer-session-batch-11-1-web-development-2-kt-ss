@@ -12,11 +12,11 @@ const App = () => {
       path: "/",
       element: <CustomLayout />, // common layout with header
       children: [
-        { index: true, element: Home },
-        { path: "articles", element: Articles },
-        { path: "article/:articleId", element: Article },
-        { path: "products", element: Products },
-        { path: "product/:productId", element: Product },
+        { index: true, element: <Home /> },
+        { path: "articles", element: <Articles /> },
+        { path: "article/:articleId", element: <Article /> },
+        { path: "products", element: <Products /> },
+        { path: "product/:productId", element: <Product /> },
       ],
     },
   ]);
