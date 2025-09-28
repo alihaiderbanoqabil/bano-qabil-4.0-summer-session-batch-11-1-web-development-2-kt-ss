@@ -8,10 +8,10 @@ export const apiSlice = createApi({
   tagTypes: ["Articles", "Products", "Categories"], // for cache invalidation
   endpoints: (builder) => ({
     getArticles: builder.query({
-      query: (params) => {
+      query: (params = "") => {
         console.log(params, "params");
 
-        return "/articles";
+        return `/articles${params}`;
         // return "/articles?populate=*&sort=publishedAt:desc";
       },
 
@@ -76,5 +76,5 @@ export const {
   useDeleteArticleMutation,
   reducerPath,
   reducer,
-  middleware
+  middleware,
 } = apiSlice;
